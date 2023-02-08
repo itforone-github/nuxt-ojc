@@ -1,0 +1,60 @@
+<template>
+    <div class="text-center">
+      <v-dialog
+        v-model="dialog"
+        persistent
+        width="500"
+      >  
+        <v-card>
+          <v-card-title class="text-h5 grey lighten-2">
+            개인정보처리방침
+          </v-card-title>
+  
+          <v-card-text style="max-height: 400px; overflow-y: scroll; white-space: break-spaces; overflow-y: auto;">
+1) 개인정보 수집.이용
+- 회사는 개인정보를 수집하거나 이용하지 않습니다. 또한 제공되는 프로그램의 사용의 편리목적을 위해 기기내부에 요구없이 저장하지도 않습니다.
+
+2) 개인정보 제 3자 이용
+- 회사는 제 3자에게 민감한 사용자 정보나, 사용내역같은 프로그램 이용정보를 제공하지 않습니다.
+
+3) 개인정보의 위탁 처리
+- 회사는 기본적으로 개인정보를 수집하지 않기때문에, 다른 회사에 위탁하지 않습니다.
+
+4) 이용자 개인정보 보유 : 이용기간 및 파기
+- 회사는 개인정보를 수집하기않기때문에 이용할수도, 파기할 어떠한 정보다 갖고있지 않습니다. 
+
+5) 개인정보의 기술적 / 관리적 보호대책
+- 회사는 개인정보를 수집하지않기때문에, 어떠한 기술적/관리적 보호대책을 적용하지 않습니다. 
+          </v-card-text>
+  
+          <v-divider></v-divider>
+  
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              color="primary"
+              text
+              @click="closeDialog(2)"
+            >
+              확인
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </div>
+</template>
+
+<script>
+  export default {
+    props: {
+      dialog: {
+        type : Boolean,
+        required: true,
+      },
+      closeDialog: {
+        type : Function,
+        required: true,
+      },
+    },    
+  }
+</script>
