@@ -37,9 +37,23 @@ module.exports = {
       }
     }
   },
+  build: {
+    analyze: false,
+    extend(config, { isClient, isServer, isDev }) {
+      if (isServer && !isDev) {
+        config.devtool = 'hidden-source-map';
+      }
+      console.log('webpack', config, isServer, isClient);
+    },
+  },
+  vuetify: {},
+  axios: {
+    browserBaseURL: process.env.NODE_ENV === 'production' ? 'http://52.79.72.184' : 'http://localhost:4000',
+    baseURL: process.env.NODE_ENV === 'production' ? 'http://52.79.72.184' : 'http://localhost:4000',
+    https: false,
+  },
   server: {
-    port: 4000,
-    host: '0.0.0.0'
-  }
+    port: process.env.PORT || 4000,
+  },
 }
 
