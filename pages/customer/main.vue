@@ -121,7 +121,7 @@
       .headerWrap{
           width: 100%;
           height: 160px;
-          background: url(/_nuxt/assets/images/bg.png) top center no-repeat;
+          background: url(@/assets/images/bg.png) top center no-repeat;
           background-size: cover;
           padding-top: 70px;
           display: flex;
