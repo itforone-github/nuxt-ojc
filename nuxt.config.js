@@ -15,33 +15,24 @@ module.exports = {
   },  
   modules: [    
     '@nuxtjs/vuetify',
-    '@nuxtjs/axios',
-    '@nuxtjs/auth-next'
+    '@nuxtjs/axios'
   ],
   css: [
     '~/assets/css/common.css',
   ],
-  loading: { color: '#3B8070' },  
-  build: {    
-    vendor: [
-      'vue-signature-pad'
-    ],
-    extend (config, { isDev, isClient }) {
-      if (isDev && isClient) {
+  loading: { color: '#3B8070' },
+  build: {
+    analyze: false,
+    extend(config, { isClient, isServer, isDev }) {
+      if (isServer && !isDev) {
+        config.devtool = 'hidden-source-map';
+      }else{
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
-      }
-    }
-  },
-  build: {
-    analyze: false,
-    extend(config, { isClient, isServer, isDev }) {
-      if (isServer && !isDev) {
-        config.devtool = 'hidden-source-map';
       }
       console.log('webpack', config, isServer, isClient);
     },
